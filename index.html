@@ -3,132 +3,132 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GROOM™ — Accueil</title>
+<title>GROOM™ — IA d'Accueil</title>
 
 <style>
     body {
         margin: 0;
         background: #000814;
+        font-family: Arial, sans-serif;
+        color: #bcdfff;
         overflow: hidden;
-        font-family: 'Arial', sans-serif;
         text-align: center;
-        color: #b7d9ff;
     }
 
-    /* Effet lumière verticale futuriste */
-    .beam {
-        position: absolute;
-        top: -200px;
-        width: 3px;
-        height: 140vh;
-        background: rgba(0,140,255,0.35);
-        box-shadow: 0 0 20px #008cff;
-        animation: beamMove 4s linear infinite;
+    /* Effet lignes futuristes */
+    .line {
+        position: fixed;
+        width: 2px;
+        height: 120vh;
+        background: rgba(0,150,255,0.45);
+        box-shadow: 0 0 15px #009dff;
+        animation: drop 5s linear infinite;
+        z-index: -1;
     }
-    @keyframes beamMove {
+
+    @keyframes drop {
         0% { transform: translateY(-150vh); opacity: 0; }
-        20% { opacity: 1; }
+        15% { opacity: 1; }
         100% { transform: translateY(150vh); opacity: 0; }
     }
 
-    /* Titre */
     h1 {
-        margin-top: 120px;
-        font-size: 40px;
-        color: #3ea3ff;
-        text-shadow: 0 0 15px #3ea3ff, 0 0 35px #007bff;
-        animation: fadeIn 1.4s ease-out;
+        margin-top: 90px;
+        font-size: 42px;
+        color: #4aa8ff;
+        text-shadow: 0 0 18px #4aa8ff, 0 0 35px #008cff;
     }
 
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Texte IA */
     #textIA {
-        width: 85%;
-        margin: 20px auto;
+        margin: 25px auto;
+        width: 90%;
+        max-width: 700px;
         font-size: 16px;
         line-height: 1.6;
-        min-height: 160px;
-        text-shadow: 0 0 10px #3ea3ff;
-        animation: fadeIn 2s ease-out;
+        text-shadow: 0 0 10px #008cff;
+        min-height: 180px;
     }
 
     /* Bouton */
     .btn {
-        margin-top: 35px;
-        padding: 16px 42px;
-        font-size: 18px;
+        margin-top: 40px;
+        padding: 16px 45px;
+        font-size: 20px;
+        background: #008cff;
         border: none;
         border-radius: 10px;
+        color: #fff;
+        box-shadow: 0 0 22px #009dff;
         font-weight: bold;
-        color: white;
-        background: linear-gradient(90deg, #007cff, #00b3ff);
-        box-shadow: 0 0 25px #009dff;
         cursor: pointer;
-        transition: 0.25s;
+        transition: 0.3s;
     }
+
     .btn:hover {
-        transform: scale(1.08);
-        box-shadow: 0 0 40px #00c3ff;
+        transform: scale(1.10);
+        box-shadow: 0 0 35px #00c3ff;
     }
 </style>
 </head>
+
 <body>
 
-<!-- Génération automatique des colonnes de lumière -->
+<!-- Effet lignes -->
 <script>
-for (let i = 0; i < 18; i++) {
-    let b = document.createElement("div");
-    b.className = "beam";
-    b.style.left = (Math.random() * 100) + "%";
-    b.style.animationDelay = (Math.random() * 3) + "s";
-    document.body.appendChild(b);
+for (let i = 0; i < 26; i++) {
+    let l = document.createElement("div");
+    l.className = "line";
+    l.style.left = Math.random() * 100 + "%";
+    l.style.animationDelay = (Math.random() * 5) + "s";
+    document.body.appendChild(l);
 }
 </script>
 
-<h1>Bienvenue dans GROOM™</h1>
-
-<!-- Zone du texte -->
-<div id="textIA"></div>
-
-<!-- Audio automatique -->
+<!-- AUDIO AUTOMATIQUE (iPhone compatible) -->
 <audio id="voice" autoplay muted>
     <source src="intro.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-// Déblocage iPhone automatique
 setTimeout(() => {
-    const v = document.getElementById("voice");
-    v.muted = false;
-    v.play().catch(()=>{});
-}, 700);
+    const audio = document.getElementById("voice");
+    audio.muted = false;
+    audio.play().catch(() => {});
+}, 600);
+</script>
 
-// Texte IA
+<h1>Bienvenue dans GROOM™</h1>
+
+<div id="textIA"></div>
+
+<script>
 const txt = `
 Initialisation du système GROOM™...
 Analyse Élít CSP en cours...
 Modules activés.
 
-Votre interface GROOM™ est maintenant opérationnelle.
-Préparez-vous : l’IA va vous guider étape par étape vers le business le plus rentable selon votre profil.
+Votre interface GROOM™ est maintenant prête.
+
+Je suis Groom, votre IA d’accompagnement.
+Je vais vous guider étape par étape dans le lancement de votre business.
+Préparez-vous à entrer dans un système conçu pour détecter vos opportunités,
+analyser vos chances de réussite et vous orienter vers la voie la plus rentable.
 `;
 
 let i = 0;
-function type() {
-    if(i < txt.length){
+const speed = 22;
+
+function typeText() {
+    if (i < txt.length) {
         document.getElementById("textIA").innerHTML += txt.charAt(i);
         i++;
-        setTimeout(type, 22);
+        setTimeout(typeText, speed);
     }
 }
-type();
+typeText();
 </script>
 
-<!-- Bouton suivant avec TON LIEN DIRECT -->
+<!-- BOUTON AVEC TON LIEN -->
 <button class="btn" onclick="window.location.href='https://ecomacademyproo.github.io/progetElite-/'">
     COMMENCER →
 </button>
